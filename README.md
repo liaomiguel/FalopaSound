@@ -1,7 +1,5 @@
-# MiauControl
-
 ## Descripción
-MiauControl es una aplicación para gestionar y controlar sonidos. Este proyecto está en desarrollo inicial.
+Aplicación para gestionar y controlar sonidos. Este proyecto está en desarrollo inicial.
 
 ## Características
 - [En desarrollo]
