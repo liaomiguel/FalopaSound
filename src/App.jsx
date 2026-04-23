@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import CircuitBackground from './components/CircuitBackground';
+import Visualizer from './components/Visualizer';
+import SoundButton from './components/SoundButton';
 
 const SOUNDS = [
-  // { id: 'sa-rang-je', label: 'SA_RANG_JE', icon: 'favorite' },
   { id: 'nada-que-ver', label: 'NAH_QUE_VEEH', icon: 'visibility_off' },
   { id: 'no-me-quemes', label: 'NO_ME_QUEMES', icon: 'local_fire_department' },
   { id: 'no-quieros-vivir', label: 'NO_QUIERO_VIVIR', icon: 'sentiment_very_dissatisfied' },
@@ -44,73 +46,57 @@ const SOUNDS = [
 function App() {
   const [volume, setVolume] = useState(50);
   const [activeSound, setActiveSound] = useState(null);
-  const [bars, setBars] = useState(new Array(64).fill(0));
+  const [analyser, setAnalyser] = useState(null);
   
   const audioRef = useRef(null);
   const audioContextRef = useRef(null);
-  const analyserRef = useRef(null);
-  const dataArrayRef = useRef(null);
-  const animationRef = useRef(null);
 
   useEffect(() => {
-    // Create Audio object once
     audioRef.current = new Audio();
     audioRef.current.addEventListener('ended', () => setActiveSound(null));
 
     return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
       if (audioContextRef.current) audioContextRef.current.close();
     };
   }, []);
 
-  const initAudio = () => {
+  const initAudio = useCallback(() => {
     if (!audioContextRef.current) {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       audioContextRef.current = new AudioContext();
-      analyserRef.current = audioContextRef.current.createAnalyser();
-      analyserRef.current.fftSize = 256;
+      const newAnalyser = audioContextRef.current.createAnalyser();
+      newAnalyser.fftSize = 512;
+      newAnalyser.smoothingTimeConstant = 0.8;
       
       const source = audioContextRef.current.createMediaElementSource(audioRef.current);
-      source.connect(analyserRef.current);
-      analyserRef.current.connect(audioContextRef.current.destination);
+      source.connect(newAnalyser);
+      newAnalyser.connect(audioContextRef.current.destination);
       
-      dataArrayRef.current = new Uint8Array(analyserRef.current.frequencyBinCount);
-      animate();
+      setAnalyser(newAnalyser);
     }
     if (audioContextRef.current.state === 'suspended') {
       audioContextRef.current.resume();
     }
-  };
+  }, []);
 
-  const animate = () => {
-    if (!analyserRef.current) return;
-    analyserRef.current.getByteFrequencyData(dataArrayRef.current);
-    
-    // Update bars state (subset or average to 64 bars)
-    const newBars = Array.from(dataArrayRef.current).slice(0, 64);
-    setBars(newBars);
-    
-    animationRef.current = requestAnimationFrame(animate);
-  };
-
-  const playSound = (id) => {
+  const playSound = useCallback((id) => {
     initAudio();
     setActiveSound(id);
     audioRef.current.src = `./sounds/${id}.mp3`;
     audioRef.current.volume = volume / 100;
     audioRef.current.play().catch(e => console.error("Playback error:", e));
-  };
+  }, [initAudio, volume]);
 
-  const handleVolumeChange = (e) => {
+  const handleVolumeChange = useCallback((e) => {
     const val = parseInt(e.target.value);
     setVolume(val);
     if (audioRef.current) audioRef.current.volume = val / 100;
-  };
+  }, []);
 
   return (
     <div className="container">
+      <CircuitBackground />
       <div className="scanlines"></div>
-      <div className="grid-background"></div>
 
       <div className="console">
         <div className="top-meta">
@@ -122,7 +108,7 @@ function App() {
         <div className="header">
           <div className="title-group">
             <h1 data-text="FAFA_SOUND_OS">FAFA_SOUND_OS</h1>
-            <div className="sub-title">NEURAL SOUND INTERFACE v3.0.0 (REACT)</div>
+            <div className="sub-title">NEURAL SOUND INTERFACE v4.0.0 (STABLE)</div>
           </div>
 
           <div className="volume-control">
@@ -140,23 +126,7 @@ function App() {
           </div>
         </div>
 
-        <div className="display-container">
-          <div className="visualizer-container">
-            <div className="visualizer-label">FREQUENCY_ANALYSIS</div>
-            <div id="audio-visualizer">
-              {bars.map((value, i) => (
-                <div 
-                  key={i} 
-                  className="visualizer-bar" 
-                  style={{ 
-                    height: `${Math.max(2, (value / 255) * 100)}px`,
-                    opacity: 0.2 + (value / 255) * 0.8
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        <Visualizer analyser={analyser} />
 
         <div className="sound-grid-header">
           <span>INDEXED_AUDIO_FILES</span>
@@ -165,14 +135,12 @@ function App() {
 
         <div className="sound-buttons">
           {SOUNDS.map(sound => (
-            <button 
+            <SoundButton 
               key={sound.id}
-              className={`sound-btn ${activeSound === sound.id ? 'active' : ''}`}
-              onClick={() => playSound(sound.id)}
-            >
-              <span className="material-icons-outlined">{sound.icon}</span>
-              {sound.label}
-            </button>
+              sound={sound}
+              isActive={activeSound === sound.id}
+              onClick={playSound}
+            />
           ))}
         </div>
 
