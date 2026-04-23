@@ -1,67 +1,74 @@
-# MiauSound
+# 🦾 FAFA SOUND OS
 
-## Descripción
-MiauSound es una consola de sonidos felinos interactiva y responsiva. Esta aplicación web permite reproducir diferentes sonidos ambientales y felinos a través de una interfaz estilo pixel art inspirada en consolas retro. La aplicación incluye un visualizador de audio y una representación animada de un gato que cambia de estado de ánimo aleatoriamente.
+> **Futuristic Soundboard - Neural Interface OS v3.0.0**
 
-## Características Principales
-- Interfaz responsiva que se adapta a dispositivos móviles y de escritorio
-- Control de volumen integrado
-- 15 botones de sonido diferentes para reproducir diversos efectos sonoros
-- Visualizador de frecuencias de audio en tiempo real
-- Representación de un gato en pixel art con más de 8 estados emocionales diferentes
-- Cambios aleatorios de expresión del gato cada 20-30 segundos
-- Diseño retro con estética pixel art
+FAFA SOUND OS is a high-performance, futuristic soundboard built with **React** and **Vite**. Inspired by "The Grid" aesthetics, it features a real-time frequency analysis visualizer, neon-glow interface, and a full suite of curated sound bites.
 
-## Requisitos
-- Navegador web moderno (Chrome, Firefox, Safari)
-- Conexión a Internet (opcional, solo para cargar la página inicial)
+![FAFA SOUND OS](https://img.shields.io/badge/OS-FAFA_SOUND-cyan?style=for-the-badge)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
-## Instalación
-1. Clonar el repositorio:
+## 🌟 Features
+
+- **Futuristic UI**: Dark-mode Tron-inspired interface with glassmorphism and scanline effects.
+- **Real-time Frequency Analysis**: Advanced audio visualizer powered by the Web Audio API.
+- **PWA (Progressive Web App)**: Installable on mobile and desktop for a native experience.
+- **React Powered**: Built with modern React hooks for seamless state management.
+- **Responsive & Fluid**: Optimized for all screen sizes, from mobile devices to ultra-wide monitors.
+- **Material Icons**: Clean, technical iconography for all 38 sound files.
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v18+)
+- npm / yarn
+
+### Installation
+1. Clone the repository
+2. Install dependencies:
    ```bash
-   git clone https://github.com/tuusuario/miausound.git
+   npm install
    ```
-2. Navegar al directorio del proyecto:
+3. Start the development server:
    ```bash
-   cd miausound
+   npm run dev
    ```
-3. Agregar archivos de sonido en formato MP3 a la carpeta `sounds/` (ver instrucciones en `sounds/README.md`)
 
-## Uso
-1. Abrir el archivo `index.html` en un navegador web
-2. Ajustar el volumen según sea necesario
-3. Hacer clic en cualquiera de los botones de sonido para reproducirlo
-4. Observar el visualizador de audio y los cambios de expresión del gato
+## 🏗️ Deployment
 
-## Estructura del Proyecto
+This project is optimized for **Netlify**. 
+
+### One-Click Deploy
+1. Connect your GitHub repository to Netlify.
+2. The `netlify.toml` file will automatically configure the build settings:
+   - **Build Command**: `npm run build`
+   - **Publish Directory**: `dist`
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18
+- **Build Tool**: Vite
+- **Styling**: Vanilla CSS (Custom Grid System)
+- **Audio Engine**: Web Audio API
+- **Icons**: Material Icons Outlined
+- **PWA**: vite-plugin-pwa
+
+## 📁 Project Structure
+
 ```
-miausound/
-├── css/
-│   ├── style.css        # Estilos principales
-│   └── cat-face.css     # Estilos específicos para la cara del gato
-├── js/
-│   └── app.js           # Lógica de la aplicación
-├── sounds/              # Carpeta para archivos de audio (no incluidos)
-│   └── README.md        # Instrucciones para agregar sonidos
-└── index.html           # Página principal
+├── public/          # Static assets (sounds, manifest)
+├── src/
+│   ├── App.jsx      # Main Logic & Components
+│   ├── index.css    # Core Design System
+│   └── main.jsx     # Entry point
+├── netlify.toml     # Netlify Configuration
+└── vite.config.js   # Vite & PWA Config
 ```
 
-## Personalización
-- Para agregar nuevos sonidos, añade archivos MP3 a la carpeta `sounds/` y actualiza los botones en `index.html`
-- Para modificar las expresiones del gato, edita las definiciones en `js/app.js`
-- Para cambiar los colores y el estilo visual, modifica las variables CSS en `css/style.css`
+## 📜 License
+Developed by **Liao Miguel** ([liao.com.ar](https://liao.com.ar))
+(C) 2026 FAFA_CORP. All rights reserved.
 
-## Contribución
-Las contribuciones son bienvenidas. Por favor, sigue estos pasos:
-1. Hacer fork del proyecto
-2. Crear una rama para tu característica (`git checkout -b feature/AmazingFeature`)
-3. Commit de tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abrir un Pull Request
-
-## Licencia
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## Contacto
-Tu Nombre - [@tutwitter](https://twitter.com/tutwitter)
-Link del proyecto: [https://github.com/tuusuario/miausound](https://github.com/tuusuario/miausound)
+---
+**SIGNAL: ENCRYPTED | STATUS: OPTIMAL | LOC: SERVER_01**

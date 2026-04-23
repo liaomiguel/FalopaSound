@@ -2,71 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FalopaSound</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cat-face.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FAFA SOUND OS | THE_GRID</title>
+    <meta name="theme-color" content="#030712">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <meta name="author" content="Liao Miguel">
 </head>
 <body>
-    <div class="container">
-        <div class="console">
-            <div class="header">
-                <h1>FalopaSound v1.3</h1>
-                <div class="volume-control">
-                    <label for="volume">VOL</label>
-                    <input type="range" id="volume" min="0" max="100" value="50">
-                    <span class="volume-percentage">50%</span>
-                </div>
-            </div>
-            
-            <div class="display-container">                
-                <div class="visualizer-container">
-                    <div id="audio-visualizer" class="pixel-art"></div>
-                </div>
-            </div>
-            
-            <div class="sound-buttons">
-                <!-- <button class="sound-btn" data-sound="sa-rang-je">sa-rang-je ❤️</button></button></button>
-                <button class="sound-btn" data-sound="carrusel-game-song">🎠</button>
-                <button class="sound-btn" data-sound="el-juego-del-calamar">El Juego del 🦑</button> -->
-                <button class="sound-btn" data-sound="nada-que-ver">Ah, Nah que veeh!</button>
-                <button class="sound-btn" data-sound="no-me-quemes">No me Quemes</button>
-                <button class="sound-btn" data-sound="no-quieros-vivir">👳🏿‍♀️</button>
-                <button class="sound-btn" data-sound="latigo">Trabaje!</button>
-                <button class="sound-btn" data-sound="bien-hecho">Bien hecho!</button>
-                <button class="sound-btn" data-sound="noo-la-policia">Noo~ la Politxiaa</button>
-                <button class="sound-btn" data-sound="se-te-quito-o-no-la-falla">Sete quito la falla?</button>
-                <button class="sound-btn" data-sound="estoy-cansado-jefe">Estoy cansado jefe</button>
-                <button class="sound-btn" data-sound="auto-no-esta">🤖</button>
-                <button class="sound-btn" data-sound="technoloyia">Technoloyia</button>
-                <button class="sound-btn" data-sound="SnoopDogg">😎</button>
-                <button class="sound-btn" data-sound="ponele-voluntad">Ponele Voluntad</button>
-                <button class="sound-btn" data-sound="atiendo-boludos">Atiendo boludo</button>
-                <button class="sound-btn" data-sound="dificil">Que dificil...😈</button>
-                <button class="sound-btn" data-sound="me siento re zarpado">Re zarpado!!!</button>
-                <button class="sound-btn" data-sound="miau-triste">😿</button>
-                <button class="sound-btn" data-sound="cuak">🦆</button>
-                <button class="sound-btn" data-sound="ahi-lo-tenes-al-pelotudo">Ahi lo tenes al 🤬</button>
-                <button class="sound-btn" data-sound="sali-de-ahi-maravilla">Sali de ahí maravilla</button>
-                <button class="sound-btn" data-sound="ya-llegaron-las-pipsash">🍕</button>
-                <button class="sound-btn" data-sound="orale-cocaso">Orale cocaso!</button>
-                <button class="sound-btn" data-sound="sad-violin">🎻</button>
-                <button class="sound-btn" data-sound="paraaaaa">Paraaaaaa</button>
-                <button class="sound-btn" data-sound="marcho">Se marcho~ ⛵</button>
-                <button class="sound-btn" data-sound="camion-venta">📢</button>
-                <button class="sound-btn" data-sound="tia-paola">👶🏿</button>        
-                <button class="sound-btn" data-sound="serepudrio">Se re pudrio~</button>
-                <button class="sound-btn" data-sound="cronica">Croónica TV</button>
-                <button class="sound-btn" data-sound="que-es-eso">Que es eso?!!!</button>
-                <button class="sound-btn" data-sound="a-lo-que-yo-vine">A lo que yo vine</button>
-                <button class="sound-btn" data-sound="milhouse">Milhouse~</button>
-                <button class="sound-btn" data-sound="es-hoy">Es hoy, es hoy!</button>
-                <button class="sound-btn" data-sound="punch">💥</button>
-                <button class="sound-btn" data-sound="cri-cri">🦗</button>
-            </div>
-        </div>
-    </div>
-    
-    <script src="js/app.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
